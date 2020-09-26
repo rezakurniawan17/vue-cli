@@ -1,8 +1,8 @@
 <template>
 <div>
-  <app-header></app-header>
+  <app-header v-bind:title="title"></app-header>
   <app-ninjas v-bind:ninjas="ninjas"></app-ninjas>
-  <app-footer></app-footer>
+  <app-footer v-bind:title="title"></app-footer>
 </div>
 </template>
 
@@ -29,7 +29,8 @@ export default {
         {name: 'Tango', specialty: 'Conditionals', show: false},
         {name: 'Kami', specialty: 'Webpack', show: false},
         {name: 'Yoshi', specialty: 'Data Diggin', show: false}
-      ]
+      ],
+      title: 'Vue Ninjass',
     }
   },
 }
