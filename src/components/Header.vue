@@ -5,7 +5,8 @@
 </template>
 
 <script>
-
+// import bus pada header
+import {bus} from '../main';
 export default {
   props:{
     title: {
@@ -18,9 +19,13 @@ export default {
   },
   methods: {
     changeTitle: function() {
-      this.$emit('changeTitle', 'Vue Wizards');
+      // this.$emit('changeTitle', 'Vue Wizards');
       // ChangeTitle sebagai nama funtion
       // Vue Wizard sebagai $event
+      
+      // menggunakan event bus
+      this.title = 'Vue Wizards';
+      bus.$emit('titleChange', 'Vue Wizards');
     }
   }
 }
