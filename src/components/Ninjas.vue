@@ -1,7 +1,7 @@
 <template>
 <div id="ninjas">
   <ul>
-    <li v-bind:key="ninja" v-for="ninja in ninjas" v-on:click="ninja.show = !ninja.show">
+    <li :key="ninja" v-for="ninja in ninjas" v-on:click="ninja.show = !ninja.show">
       <h2>{{ninja.name}}</h2>
       <h3 v-show="ninja.show">{{ninja.specialty}}</h3>
     </li>
@@ -15,12 +15,7 @@ export default {
   props: {
     ninjas: {
       type: Array,
-      required: true,
-    }
-  },
-  data() {
-    return {
-      
+      required: true
     }
   },
   methods: {
@@ -28,7 +23,6 @@ export default {
       this.ninjas.pop();
     }
   },
-
 }
 </script>
 

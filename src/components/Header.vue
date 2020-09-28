@@ -14,7 +14,6 @@ export default {
   },
   data() {
     return {
-      title: 'Vue Ninja'
     }
   },
   methods: {
