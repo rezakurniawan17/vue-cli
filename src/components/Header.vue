@@ -18,7 +18,9 @@ export default {
   },
   methods: {
     changeTitle: function() {
-      this.title= "Vue Wizards"
+      this.$emit('changeTitle', 'Vue Wizards');
+      // ChangeTitle sebagai nama funtion
+      // Vue Wizard sebagai $event
     }
   }
 }
