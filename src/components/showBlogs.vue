@@ -1,7 +1,8 @@
 <template>
   <div v-theme:column="'narrow'" id="show-blogs">
     <h1>All Blog Articles</h1>
-    <div :key="blog" v-for="blog in blogs" class="single-blog">
+    <input type="text" v-model="search" placeholder="search blogs">
+    <div :key="blog" v-for="blog in filteredBlogs" class="single-blog">
       <!-- Custom Directives -->
 
       <!-- Filter pada output blog tanpa merubah sumber data -->
@@ -16,11 +17,19 @@
 export default {
  data() {
    return {
-     blogs: []
+     blogs: [],
+     search: ''
    }
  },
  methods: {
    
+ },
+ computed: {
+   filteredBlogs: function(){
+     return this.blogs.filter((blog) => {
+       return blog.title.match(this.search)
+     })
+   }
  },
  created() {
   //  GET REQUEST
