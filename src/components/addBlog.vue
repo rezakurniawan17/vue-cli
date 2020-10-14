@@ -2,7 +2,7 @@
   <div>
     <div id="add-blog">
       <h2>Add a New Blog Post</h2>
-      <form action="">
+      <form v-if="!submitted">
         <label>Blog Title</label>
         <input  v-model.lazy="blog.title" type="text" required>
         <label>Content</label>
@@ -21,7 +21,11 @@
         <select v-model="blog.author">
           <option :key="author" v-for="author in authors">{{author}}</option>
         </select>
+        <button v-on:click.prevent="post">Send</button>
       </form>
+      <div v-if="submitted">
+        <h3>Thanks for adding your post</h3>
+      </div>
       <div id="preview">
         <h3>Preview Blog</h3>
         <p>Blog Title: {{blog.title}}</p>
@@ -50,7 +54,22 @@ export default {
         categories: [],
         author: ''
       },
-      authors: ['Ninja','Avenger','Vue Vindicator']
+      authors: ['Ninja','Avenger','Vue Vindicator'],
+      submitted: false,
+    }
+  },
+  methods: {
+    post: function() {
+      this.$http.post('https://jsonplaceholder.typicode.com/posts',{
+        // disini apa yang akan kita post
+        // masih dalam bentuk promise
+        title: this.blog.title,
+        body: this.blog.content,
+        userId: 1
+      })
+      // .then(response => response.json()).then(json => console.log(json))
+      .then(data => console.log(data));
+      this.submitted = true
     }
   },
 }
