@@ -4,6 +4,16 @@ import App from './App.vue'
 import VueResource from 'vue-resource'
 Vue.use(VueResource);
 
+// Filters
+// 2 argumen nama dan funsi
+Vue.filter('to-uppercase', function(value){
+  return value.toUpperCase();
+})
+
+Vue.filter('snippet', function(value){
+  return value.slice(0,100) + '...';
+})
+
 // Custom Directives (deklarasi)
 Vue.directive('rainbow', {
   bind(el, binding, vnode) {
@@ -21,10 +31,9 @@ Vue.directive('theme', {
     if (binding.arg =="column") {
       el.style.background = "#ddd";
       el.style.padding = "20px"
-
     }
   }
-})
+});
 
 // Deklarasi bus
 export const bus = new Vue();

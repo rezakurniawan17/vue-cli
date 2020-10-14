@@ -3,8 +3,11 @@
     <h1>All Blog Articles</h1>
     <div :key="blog" v-for="blog in blogs" class="single-blog">
       <!-- Custom Directives -->
-      <h2 v-rainbow>{{ blog.title }}</h2>
-      <p>{{ blog.body }}</p>
+
+      <!-- Filter pada output blog tanpa merubah sumber data -->
+      <!-- Dengan cara menggunakan tanda | -->
+      <h2 v-rainbow>{{ blog.title | to-uppercase }}</h2>
+      <p>{{ blog.body | snippet}}</p>
     </div>
   </div>
 </template>
