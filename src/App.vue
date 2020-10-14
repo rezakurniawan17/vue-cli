@@ -3,7 +3,7 @@
     <form-helper>
       <div slot="form-header">
         <h3>This is the title of the form</h3>
-        <p>Information of the form</p>
+        <p>Information about the form</p>
       </div>
       <div slot="form-fields">
         <input type="text" placeholder="name" required>
@@ -17,20 +17,15 @@
 </template>
 
 <script>
-import formHelper from './components/formHelper.vue'
-
+import formHelper from './components/formHelper.vue';
 export default {
   components: {
-    'formHelper': formHelper
+    'form-helper': formHelper
   },
   data() {
     return {
-      title: 'I am a dynamic Slot Title'
-    }
-  },
-  methods: {
-    handleSubmit: function() {
-      alert('Thanks for submitting');
+      title: 'I am a dynamic slot title',
+      text: 'I am a dynamic text title'
     }
   },
 }
