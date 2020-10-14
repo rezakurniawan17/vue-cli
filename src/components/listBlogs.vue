@@ -1,6 +1,6 @@
 <template>
   <div v-theme:column="'narrow'" id="show-blogs">
-    <h1>All Blog Articles</h1>
+    <h1>List Blog Title</h1>
     <input type="text" v-model="search" placeholder="search blogs">
     <div :key="blog" v-for="blog in filteredBlogs" class="single-blog">
       <!-- Custom Directives -->
@@ -8,7 +8,6 @@
       <!-- Filter pada output blog tanpa merubah sumber data -->
       <!-- Dengan cara menggunakan tanda | -->
       <h2 v-rainbow>{{ blog.title | to-uppercase }}</h2>
-      <p>{{ blog.body | snippet}}</p>
     </div>
   </div>
 </template>
@@ -28,7 +27,7 @@ methods: {
   
 },
 computed: {
-
+  
 },
 filters:{
   toUppercase(value) {
