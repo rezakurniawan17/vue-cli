@@ -15,27 +15,39 @@
 
 <script>
 export default {
- data() {
-   return {
-     blogs: [],
-     search: ''
-   }
- },
- methods: {
-   
- },
- computed: {
-   filteredBlogs: function(){
-     return this.blogs.filter((blog) => {
-       return blog.title.match(this.search)
-     })
-   }
- },
- created() {
-  //  GET REQUEST
-   this.$http.get('https://jsonplaceholder.typicode.com/posts')
-   .then(data => this.blogs = data.body.slice(0,10))
- },
+data() {
+  return {
+    blogs: [],
+    search: ''
+  }
+},
+methods: {
+  
+},
+computed: {
+  filteredBlogs: function(){
+    return this.blogs.filter((blog) => {
+      return blog.title.match(this.search)
+    })
+  }
+},
+filters:{
+  toUppercase(value) {
+    return value.toUpperCase();
+  }
+},
+directives: {
+  'rainbow': {
+    bind(el, binding, vnode) {
+    el.style.color = '#' + Math.random().toString().slice(2,8)
+  }
+  }
+},
+created() {
+//  GET REQUEST
+  this.$http.get('https://jsonplaceholder.typicode.com/posts')
+  .then(data => this.blogs = data.body.slice(0,10))
+},
 }
 </script>
 
