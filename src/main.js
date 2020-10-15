@@ -1,8 +1,20 @@
 import Vue from 'vue'
 import App from './App.vue'
-// Import untuk http request menggunakan vue-resources
 import VueResource from 'vue-resource'
+
+// import vue-router
+import VueRouter from 'vue-router'
+import Routes from './routes.js'
+
+// Import untuk http request menggunakan vue-resources
 Vue.use(VueResource);
+
+// menggunakan VueRouter
+Vue.use(VueRouter);
+const router = new VueRouter({
+  routes: Routes
+})
+
 
 // Filters
 // 2 argumen nama dan fungsi
@@ -32,5 +44,6 @@ export const bus = new Vue();
 
 new Vue({
   el: '#app',
-  render: h => h(App)
+  render: h => h(App),
+  router: router //menggunakan router pada instance Vue
 })
