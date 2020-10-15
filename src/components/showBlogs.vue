@@ -7,7 +7,7 @@
 
       <!-- Filter pada output blog tanpa merubah sumber data -->
       <!-- Dengan cara menggunakan tanda | -->
-      <h2 v-rainbow>{{ blog.title | to-uppercase }}</h2>
+      <router-link v-bind:to="'/blog/' + blog.id"><h2>{{ blog.title | to-uppercase }}</h2></router-link>
       <p>{{ blog.body | snippet}}</p>
     </div>
   </div>
