@@ -8,7 +8,7 @@
       <!-- Filter pada output blog tanpa merubah sumber data -->
       <!-- Dengan cara menggunakan tanda | -->
       <router-link v-bind:to="'/blog/' + blog.id"><h2>{{ blog.title | to-uppercase }}</h2></router-link>
-      <p>{{ blog.body | snippet}}</p>
+      <p>{{ blog.content | snippet}}</p>
     </div>
   </div>
 </template>
@@ -44,8 +44,16 @@ directives: {
 },
 created() {
 //  GET REQUEST
-  this.$http.get('https://jsonplaceholder.typicode.com/posts')
-  .then(data => this.blogs = data.body.slice(0,10))
+  this.$http.get('https://latihan-vue-js.firebaseio.com/posts.json')
+  .then(function(data) {return data.json()})
+  .then(function(data) {
+    var blogArray = [];
+    for(let key in data) {
+      data[key].id = key
+      blogArray.push(data[key]);
+    }
+    this.blogs = blogArray;
+  })
 },
 
 // membuat mixin dengan array
