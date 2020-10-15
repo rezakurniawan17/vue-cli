@@ -60,13 +60,7 @@ export default {
   },
   methods: {
     post: function() {
-      this.$http.post('https://jsonplaceholder.typicode.com/posts',{
-        // disini apa yang akan kita post
-        // masih dalam bentuk promise
-        title: this.blog.title,
-        body: this.blog.content,
-        userId: 1
-      })
+      this.$http.post('https://latihan-vue-js.firebaseio.com/posts.json',this.blog)
       // .then(response => response.json()).then(json => console.log(json))
       .then(data => console.log(data));
       this.submitted = true
